@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row my-5">
+            <div class=" m-auto colspan-lg-12 border p-5 shadow" id="signUpPage">
+                <h2>-.Registration Form.-</h2>
+
+                <input type="text" class="form-control  p-4 mt-3" placeholder="Enter full name" id="fName">
+                <input type="number" placeholder="Enter Your number" class="form-control  p-4 mt-2" id="phoneN">
+                <input type="text" placeholder="Email example @ .com" class="form-control  p-4 mt-2" id="eM">
+                <input type="password" placeholder="Enter Your password" class="form-control  p-4 mt-2" id="passWord">
+                <p class="my-1">Already have an account <a href="loginPage.html">Sign In</a></p>
+                <button class="btn btn-primary ml- mt-2 p-3 w-100" onclick="submitUsers()" id="submitBtn">Submit Details</button>
+            </div>
+        </div>
+    </div>
+    
+   
+    <script>
+        var generalUser = [];
+        var customers = {};
+        document.getElementById("fName").addEventListener("mouseover", () => {
+            fName.style.borderColor = ""
+            phoneN.style.borderColor = ""
+            passWord.style.borderColor = ""
+            eM.style.borderColor = ""
+            submitBtn.disabled = false;
+            submitBtn.style.backgroundColor = ""
+        })
+        document.getElementById("phoneN").addEventListener("mouseover", () => {
+            fName.style.borderColor = ""
+            phoneN.style.borderColor = ""
+            passWord.style.borderColor = ""
+            eM.style.borderColor = ""
+            submitBtn.disabled = false;
+            submitBtn.style.backgroundColor = ""
+        })
+        document.getElementById("passWord").addEventListener("mouseover", () => {
+            fName.style.borderColor = ""
+            phoneN.style.borderColor = ""
+            passWord.style.borderColor = ""
+            eM.style.borderColor = ""
+            submitBtn.disabled = false;
+            submitBtn.style.backgroundColor = ""
+        })
+
+        document.getElementById("eM").addEventListener("mouseover", () => {
+            fName.style.borderColor = ""
+            phoneN.style.borderColor = ""
+            passWord.style.borderColor = ""
+            eM.style.borderColor = ""
+            submitBtn.disabled = false;
+            submitBtn.style.backgroundColor = ""
+        })
+
+        function submitUsers() {
+            let customers = {
+                fullname: fName.value,
+                phoneNumberOfUsers: phoneN.value,
+                emailOUsers: eM.value,
+                passwordOfUsers: passWord.value
+            };
+            console.log(customers);
+            console.log(generalUser);
+            fName.value = " "
+            phoneN.value = " "
+            eM.value = " "
+            passWord.value = " "
+            if (customers.fullname == "" || customers.phoneNumberOfUsers == "" || customers.emailOUsers == "" || customers.passwordOfUsers == "") {
+                fName.style.borderColor = "red"
+                phoneN.style.borderColor = "red"
+                passWord.style.borderColor = "red"
+                eM.style.borderColor = "red"
+                submitBtn.disabled = true;
+                submitBtn.style.backgroundColor = "red"
+            } else {
+                if(localStorage.user!=null){
+                generalUser=JSON.parse(localStorage.getItem("user"))
+                }
+                generalUser.push(customers)
+                window.localStorage.setItem('user', JSON.stringify(generalUser));
+                location.href = "./loginPage.html"
+               
+            }
+
+
+        }
+        document.getElementById("eMail").addEventListener("mouseover", () => {
+            eMail.style.borderColor = ""
+            passWordUsers.style.borderColor = ""
+            loginBtn.disabled = false;
+            loginBtn.style.backgroundColor = ""
+        })
+        document.getElementById("passWordUsers").addEventListener("mouseover", () => {
+            eMail.style.borderColor = ""
+            passWordUsers.style.borderColor = ""
+            loginBtn.disabled = false;
+            loginBtn.style.backgroundColor = ""
+        })
+
+      
+    </script>
+</body>
+
+</script>
+</body>
+
+</html>
+
+</html>
+<!-- loginPage.style.display = "none"; } // JSON.parse(window.localStorage.getItem('user')); } -->

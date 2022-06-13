@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./bootstrap/bootstrap.css">
+</head>
+<body>
+    
+
+    <div class="container h-100" style="display:block;" id="loginPage">
+        <div class="row my-5">
+            <div class="colspan sm-4 colspan md-8 colspan lg-12 m-auto shadow p-5">
+                <h1>-.Sign In Here.-</h1>
+                <hr>
+                <input type="text" placeholder="Email example @ .com" class="form-control  p-4 mt-2" id="eMail">
+                <input type="password" placeholder="Enter Your password" class="form-control  p-4 mt-2" id="passWordUsers">
+                <hr>
+                <button class="btn btn-primary  mt-1 p-3 w-100" onclick="loginUsers()" id="loginBtn">Login</button>
+                Go to <a href="./index.html">Sign Up</a>
+            </div>
+        </div>
+    </div>
+    <script>
+          function loginUsers() {
+            var passedUserDetails = JSON.parse(window.localStorage.getItem('user'));
+            loginEmail = eMail.value;
+            loginPassword = passWordUsers.value;
+            var aM = passedUserDetails.find((pattern) => (pattern.emailOUsers == loginEmail && pattern.passwordOfUsers == loginPassword));
+            webUsers = [];
+            if (loginEmail == "" || loginPassword == "") {
+                eMail.style.borderColor = "red"
+                passWordUsers.style.borderColor = "red"
+                loginBtn.disabled = true;
+                loginBtn.style.backgroundColor = "red"
+                alert("Kindly Fill In details!!")
+            } else {
+                if (aM) {
+                    webUsers.push(aM)
+                    zEE = JSON.stringify(webUsers);
+                    localStorage.setItem("gospel", zEE)
+                    loginEmail = ""
+                    loginPassword = ""
+                    console.log("Correct Details==Pass!!");
+                    location.href="./dashboard.html"
+                } else {
+                    alert("Wrong Details")
+                }
+
+            }
+        }
+
+    </script>
+</body>
+</html>
